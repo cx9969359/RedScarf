@@ -4,6 +4,6 @@ from star.modules.Mars import mars
 urlpatterns = [
     url(
         r'^mars$',
-        mars.MarsView.as_view()
+        mars.MarsView.post
     ),
 ]
