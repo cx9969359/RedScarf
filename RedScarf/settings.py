@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'star',
+    'djcelery',
+    'kombu.transport.django'
 ]
 
 MIDDLEWARE = [
@@ -114,3 +116,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Celery中间件url
+BROKER_URL = 'django://localhost:8000//'
