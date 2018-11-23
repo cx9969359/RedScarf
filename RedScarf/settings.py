@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'star',
-    'djcelery',
 ]
 
 MIDDLEWARE = [
@@ -117,5 +116,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Celery中间件及结果存储
-BROKER_URL = 'django://localhost:8000//'
-CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
