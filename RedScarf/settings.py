@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'star',
     'djcelery',
-    'kombu.transport.django'
 ]
 
 MIDDLEWARE = [
@@ -117,5 +116,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Celery中间件url
+# Celery中间件及结果存储
 BROKER_URL = 'django://localhost:8000//'
+CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
