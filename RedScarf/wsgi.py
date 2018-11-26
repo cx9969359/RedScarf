@@ -17,6 +17,6 @@ if env == 'DEVELOPMENT':
 elif env == 'PRODUCT':
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'RedScarf.settings.production')
 else:
-    raise EnvironmentError('Environment is error')
+    raise Exception('Environment is error')
 
 application = get_wsgi_application()
