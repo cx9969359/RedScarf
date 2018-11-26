@@ -9,11 +9,3 @@ class MarsView():
         return Response(
             data='Nice,you have arrived here!'
         )
-
-    def get_env(self):
-        pass
-
-
-if __name__ == '__main__':
-    mar = MarsView()
-    mar.get_env()
