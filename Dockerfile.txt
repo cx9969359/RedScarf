@@ -1,0 +1,41 @@
+FROM centos:7
+MAINTAINER Charlie.chang <1929969359@qq.com>
+
+#设置时区
+ENV TZ "Asia/Shanghai"
+
+#安装依赖
+RUN set -ex \
+    && yum update -y \
+    && yum install -y wget tar libffi-devel zlib-devel bzip2-devel openssl openssl-devel \
+    && yum install -y ncurses-devel sqlite-devel readline-devel tk-devel gcc make \
+    && yum install -y expat-devel gdbm-devel gcc-c++  libxml* gzip  zlib zlib-devel \
+    && yum install -y epel-release lsof vim
+
+#编译安装python3
+RUN wget https://www.python.org/ftp/python/3.5.4/Python-3.5.4.tgz \
+    && tar -zxvf Python-3.5.4.tgz -C /home \
+    && cd /home/Python-3.5.4 \
+    && ./configure prefix=/usr/local/python3 \
+    && make \
+    && make install
+
+#建立python3软链接
+Run ln -s /usr/local/python3/bin/python3 /usr/bin/python3 \
+    && ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
+
+#编译安装nginx
+Run wget http://nginx.org/download/nginx-1.13.8.tar.gz \
+    && tar -zxvf nginx-1.13.8.tar.gz -C /usr/local \
+    && cd /usr/local/nginx-1.13.8 \
+    && ./configure --prefix=/usr/local/nginx --user=nginx --group=nginx --with-http_stub_status_module --with-http_ssl_module --with-http_gzip_static_module \
+    && make \
+    && make install \
+    && make clean \
+    && rm -rf /usr/local/nginx-1.13.8 /nginx-1.13.8.tar.gz
+
+#暴露端口，运行时可以指定宿主机端口与之映射
+EXPOSE 8000
+
+
+
