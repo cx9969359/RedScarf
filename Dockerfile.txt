@@ -25,7 +25,11 @@ Run ln -s /usr/local/python3/bin/python3 /usr/bin/python3 \
     && ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3 \
     && rm -y /Python-3.5.4.tgz
 
-#编译安装nginx
+#安装uwsgi
+Run pip3 install uwsgi \
+    && ln -s /usr/local/python3/bin/uwsgi /usr/bin/uwsgi3
+
+#编译安装nginx并通过绝对路径+ '-c'指定配置文件
 Run wget http://nginx.org/download/nginx-1.13.8.tar.gz \
     && tar -zxvf nginx-1.13.8.tar.gz -C /usr/local \
     && cd /usr/local/nginx-1.13.8 \
@@ -33,7 +37,9 @@ Run wget http://nginx.org/download/nginx-1.13.8.tar.gz \
     && make \
     && make install \
     && make clean \
-    && rm -rf /usr/local/nginx-1.13.8 /nginx-1.13.8.tar.gz
+    && rm -rf /usr/local/nginx-1.13.8 /nginx-1.13.8.tar.gz \
+    && /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+
 
 #暴露端口，运行时可以指定宿主机端口与之映射
 EXPOSE 8000
