@@ -22,7 +22,8 @@ RUN wget https://www.python.org/ftp/python/3.5.4/Python-3.5.4.tgz \
 
 #建立python3软链接
 Run ln -s /usr/local/python3/bin/python3 /usr/bin/python3 \
-    && ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
+    && ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3 \
+    && rm -y /Python-3.5.4.tgz
 
 #编译安装nginx
 Run wget http://nginx.org/download/nginx-1.13.8.tar.gz \
