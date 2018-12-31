@@ -43,7 +43,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Celery中间件及结果存储
 BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
