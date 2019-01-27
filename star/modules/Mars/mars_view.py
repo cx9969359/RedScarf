@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from RedScarf.authentication.authentication import ExpireAuthentication
+from RedScarf.authentication_and_permission.authentication import ExpireAuthentication
 
 
 class MarsView(APIView):
