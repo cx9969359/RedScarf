@@ -8,5 +8,10 @@ class User(models.Model):
     password = models.CharField(max_length=256, default='')
 
 
+class Token(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    token = models.CharField(max_length=256, default='')
+
+
 class Check(models.Model):
     title = models.CharField(max_length=128, default='')
