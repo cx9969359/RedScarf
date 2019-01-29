@@ -1,8 +1,7 @@
 from rest_framework import exceptions
 from rest_framework.authentication import BaseAuthentication
-from django.core.cache import cache
 
-from star.models import Token
+from star.models import TokenObject
 
 
 class ExpireAuthentication(BaseAuthentication):
@@ -15,8 +14,8 @@ class ExpireAuthentication(BaseAuthentication):
         # request._request为原生request
         token = request._request.GET.get('authentication_and_permission', None)
         try:
-            token = Token.objects.get(token=token)
-            user = token.user
+            token_obj = TokenObject.objects.get(token=token)
+            user = token_obj.user
         except Exception:
             raise exceptions.AuthenticationFailed('用户认证失败')
         return (user, token)
