@@ -12,7 +12,7 @@ class ExpireAuthentication(BaseAuthentication):
 
     def authenticate(self, request):
         # request._request为原生request
-        token = request._request.GET.get('authentication_and_permission', None)
+        token = request._request.GET.get('token', None)
         try:
             token_obj = TokenObject.objects.get(token=token)
             user = token_obj.user
