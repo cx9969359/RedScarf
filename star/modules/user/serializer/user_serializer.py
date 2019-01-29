@@ -8,8 +8,8 @@ class SignInValidator(serializers.Serializer):
     password = serializers.CharField(max_length=128, allow_blank=False)
 
     def validate(self, attrs):
-        username_list = User.objects.all()
-        if attrs['username'] in username_list:
+        user_list = User.objects.filter(username=attrs['username'])
+        if user_list.count() > 0:
             msg = {'result': 'The username has existed'}
             raise Exception(msg)
         return attrs
