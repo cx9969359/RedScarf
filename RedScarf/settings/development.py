@@ -26,10 +26,10 @@ DATABASES = {
         'NAME': 'redscarf',
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'USER':'root',
-        'PASSWORD':'',
-        'HOST':'127.0.0.1',
-        'PORT':'3306'
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
     }
 }
 
@@ -54,3 +54,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Celery中间件及结果存储
 BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+# 缓存设置
+TOKEN_CACHES_TIMEOUT = 60 * 60
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': 'e:/redscarf_cache'
+    }
+}

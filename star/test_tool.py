@@ -1,13 +1,10 @@
-class Test():
-    def test(self):
-        import time
-        print(str(time.time()))
-        import hashlib
-        md = hashlib.md5()
-        md.update(('a' + 'q').encode('utf-8'))
-        print(md.hexdigest())
+from flask import Flask
+
+app = Flask(__name__)
+@app.route('/')
+def test_flask():
+    return 'nice'
 
 
 if __name__ == '__main__':
-    test = Test()
-    test.test()
+    app.run()

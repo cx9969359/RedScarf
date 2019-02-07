@@ -7,7 +7,6 @@ from star.models import TokenObject
 class ExpireAuthentication(BaseAuthentication):
     """
     自定义认证权限
-    todo 将token存入缓存并设定期限
     """
 
     def authenticate(self, request):

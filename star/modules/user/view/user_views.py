@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
+from django.core.cache import cache
 from star.models import User
 from star.modules.user.serializer.user_serializer import SignInValidator
 from star.modules.user.service.user_service import TokenService
@@ -28,7 +28,6 @@ class RegisterUserView(APIView):
 class LoginUserView(APIView):
     """
     用户登录并签发token
-    todo token的缓存，过期删除
     """
 
     def post(self, request, *args, **kwargs):
