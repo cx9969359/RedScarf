@@ -40,7 +40,7 @@ optionaldict==0.1.1
 oss2==2.4.0
 parse==1.9.0
 parsel==1.5.1
-Pillow==5.1.0
+Pillow==8.1.1
 pyasn1==0.4.4
 pyasn1-modules==0.2.2
 pycparser==2.19
