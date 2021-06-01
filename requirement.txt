@@ -67,7 +67,7 @@ six==1.11.0
 stuf==0.9.16
 Twisted==18.9.0
 uritemplate==3.0.0
-urllib3==1.22
+urllib3==1.26.5
 vine==1.1.4
 w3lib==1.19.0
 xlrd==1.1.0
